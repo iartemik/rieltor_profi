@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block link %} 
+<link rel="stylesheet" href="{{ url_for('static',filename='css/login.css')}}">  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container"> 
+    <div class="login-container"> 
+        <form method="post" action="{{ url_for('auth.login') }}" class="form">
+            <h2>Вход</h2> 
+            {{form_login.hidden_tag()}}
+            {{form_login.phone.label}}
+            {{form_login.phone()}}
+            {{form_login.is_rieltor.label}}
+            {{form_login.is_rieltor()}}
+            {{form_login.submit()}}
+        </form>
+        <button id="flip-register">Быстрая регистрация</button> 
+    </div> 
+    <div class="register-container hidden"> 
+        <form method="post" action="{{ url_for('auth.register') }}" class="form">
+            <h2>Регистрация</h2>  
+            {{form_reg.hidden_tag()}}
+            {{form_reg.username.label}}
+            {{form_reg.username()}}
+            {{form_reg.email.label}}
+            {{form_reg.email()}}
+            {{form_reg.phone.label}}
+            {{form_reg.phone()}}
+            {{form_reg.is_rieltor.label}}
+            {{form_reg.is_rieltor()}}
+            <button type="button" id="toggle-button">Информация для риелтора</button>
+            <div id="rieltor-info"> 
+                {{form_reg.experience.label}}
+                {{form_reg.experience()}}
+                {{form_reg.company.label}}
+                {{form_reg.company()}}
+                {{form_reg.info.label}}
+                {{form_reg.info()}}
+            </div>
+            {{form_reg.submit()}}    
+        </form>
+        <button id="flip-login">Вход</button> 
+    </div> 
+</div> 
+<script src="{{ url_for('static',filename='js/login.js')}}"> </script>
+<script src="{{ url_for('static',filename='js/handle_phone.js')}}"> </script>
+{% endblock %}
