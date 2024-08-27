@@ -9,7 +9,9 @@ from app import *
 
 
 def create_app(config):
-    app = Flask(__name__, template_folder="./app/templates", static_folder="./app/static")
+    app = Flask(
+        __name__, template_folder="./app/templates", static_folder="./app/static"
+    )
     app.config.from_object(config)
     db.init_app(app)
     app.register_blueprint(bp_main)  # регистрация маршрутной области
@@ -21,4 +23,3 @@ def create_app(config):
 app = create_app(Config)
 if __name__ == "__main__":
     app.run(debug=True)
-    db.create_all()

@@ -18,3 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000); // 5 секунд
     }
 });
+
+// let is_show_rieltor_info=0;
+
+// document.getElementById('show_info_for_rieltor').addEventListener('click', function() { 
+//     if( is_show_rieltor_info == 0 )
+//        {  
+//         document.getElementById('rieltor-info').classList.add('show-info'); 
+//         is_show_rieltor_info=1;
+//     }
+//     else {
+//         document.getElementById('rieltor-info').classList.remove('show-info'); 
+//         is_show_rieltor_info=0;
+//         }
+
+// });
+document.getElementById('toggle-button').addEventListener('click', function() {  
+    var infoDiv = document.getElementById('rieltor-info');  
+    if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {  
+        this.textContent = 'Скрыть';
+        infoDiv.style.display="block";
+    } else {   
+        infoDiv.style.display='none';
+        this.textContent = 'Информация для риелтора';  
+    }  
+});  
